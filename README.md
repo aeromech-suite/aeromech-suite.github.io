@@ -1,1 +1,0 @@
-# sametyesiltas260-ctrl.github.io
