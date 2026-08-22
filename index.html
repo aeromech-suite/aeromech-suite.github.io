@@ -29,11 +29,14 @@
             width: 100%;
             padding: 20px 40px;
             box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.95);
             border-bottom: 1px solid #334155;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .brand {
             font-size: 20px;
@@ -44,6 +47,13 @@
             gap: 10px;
         }
         .brand span { color: var(--primary); }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
         .creator-tag {
             font-size: 13px;
             color: var(--muted);
@@ -51,6 +61,36 @@
             padding: 6px 12px;
             border-radius: 20px;
             border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Dil Seçenekleri */
+        .lang-switch {
+            display: flex;
+            background: #0f172a;
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .lang-btn {
+            background: transparent;
+            color: var(--muted);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #000;
+        }
+        .lang-btn:hover:not(.active) {
+            color: var(--text);
         }
 
         /* Kurumsal Karşılama Alanı */
@@ -164,57 +204,115 @@
             font-size: 13px;
             border-top: 1px solid #1e293b;
         }
-        footer a { color: var(--primary); text-decoration: none; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="navbar">
         <div class="brand">🚀 AeroMech <span>Suite</span></div>
-        <div class="creator-tag">Platform engineered by <strong>Samet Yeşiltaş</strong></div>
+        <div class="nav-right">
+            <div class="creator-tag">
+                <span data-i18n="creator">Platform geliştiricisi:</span> 
+                <strong>Samet Yeşiltaş</strong>
+            </div>
+            <div class="lang-switch">
+                <button class="lang-btn active" id="btn-tr" onclick="setLanguage('tr')">TR</button>
+                <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+            </div>
+        </div>
     </div>
 
     <div class="hero">
-        <h1>Yeni Nesil Tasarım & Simülasyon Platformu</h1>
-        <p>Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
+        <h1 data-i18n="hero-title">Yeni Nesil Tasarım & Simülasyon Platformu</h1>
+        <p data-i18n="hero-desc">Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
     </div>
 
     <div class="container">
         <div class="tools-grid">
             <!-- 1. ARAÇ -->
             <div class="tool-card">
-                <div class="status-badge">V 2.1 Yayında</div>
+                <div class="status-badge" data-i18n="t1-badge">V 2.1 Yayında</div>
                 <div class="tool-icon">📊</div>
                 <h3>Material Analyzer Pro</h3>
-                <p>Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
-                <!-- LİNK BURADA GÜNCELLENDİ -->
-                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank">Simülasyonu Başlat</a>
+                <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
+                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank" data-i18n="t1-btn">Simülasyonu Başlat</a>
             </div>
 
             <!-- 2. ARAÇ -->
             <div class="tool-card" style="opacity: 0.6;">
-                <div class="status-badge status-coming">Geliştiriliyor</div>
+                <div class="status-badge status-coming" data-i18n="t2-badge">Geliştiriliyor</div>
                 <div class="tool-icon">✈️</div>
                 <h3>AeroFoil Flow Dynamics</h3>
-                <p>Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
-                <a href="#" class="launch-btn" style="background:#334155; color:#94a3b8; pointer-events: none;">Erişime Kapalı</a>
+                <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
+                <a href="#" class="launch-btn" style="background:#334155; color:#94a3b8; pointer-events: none;" data-i18n="t2-btn">Erişime Kapalı</a>
             </div>
             
             <!-- 3. ARAÇ -->
             <div class="tool-card" style="opacity: 0.6;">
-                <div class="status-badge status-coming">Geliştiriliyor</div>
+                <div class="status-badge status-coming" data-i18n="t3-badge">Geliştiriliyor</div>
                 <div class="tool-icon">⚙️</div>
                 <h3>CNC G-Code Optimizer</h3>
-                <p>TEI ve benzeri yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
-                <a href="#" class="launch-btn" style="background:#334155; color:#94a3b8; pointer-events: none;">Erişime Kapalı</a>
+                <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
+                <a href="#" class="launch-btn" style="background:#334155; color:#94a3b8; pointer-events: none;" data-i18n="t3-btn">Erişime Kapalı</a>
             </div>
         </div>
     </div>
 
-   <footer>
+    <footer>
         &copy; 2026 AeroMech Suite. Platform architectures developed by <a href="https://www.linkedin.com/in/sametyeşiltaş" target="_blank">Samet Yeşiltaş (APİG TECH)</a>.<br>
-        Built for modern aerospace and mechanical design.
+        <span data-i18n="footer-text">Modern havacılık ve makine mühendisliği için geliştirildi.</span>
     </footer>
 
+    <script>
+        // Dil Sözlüğü (Dictionary)
+        const translations = {
+            'tr': {
+                'creator': 'Platform geliştiricisi:',
+                'hero-title': 'Yeni Nesil Tasarım & Simülasyon Platformu',
+                'hero-desc': 'Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.',
+                't1-badge': 'V 2.1 Yayında',
+                't1-desc': 'Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.',
+                't1-btn': 'Simülasyonu Başlat',
+                't2-badge': 'Geliştiriliyor',
+                't2-desc': 'Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.',
+                't2-btn': 'Erişime Kapalı',
+                't3-badge': 'Geliştiriliyor',
+                't3-desc': 'Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.',
+                't3-btn': 'Erişime Kapalı',
+                'footer-text': 'Modern havacılık ve makine mühendisliği için geliştirildi.'
+            },
+            'en': {
+                'creator': 'Platform engineered by:',
+                'hero-title': 'Next-Gen Design & Simulation Platform',
+                'hero-desc': 'Cloud-based, high-precision engineering tools developed to accelerate aerospace, mechanical design, and manufacturing processes.',
+                't1-badge': 'V 2.1 Live',
+                't1-desc': 'Enterprise FEA tool calculating static load scenarios for machine parts and structural profiles, providing material-based deflection, stress, and cost optimization.',
+                't1-btn': 'Launch Simulation',
+                't2-badge': 'In Development',
+                't2-desc': 'Aerodynamic analysis module calculating Lift and Drag coefficients based on wind tunnel data of aircraft wing profiles.',
+                't2-btn': 'Access Closed',
+                't3-badge': 'In Development',
+                't3-desc': 'Cloud-based G-Code converter optimizing machining paths of mechanical designs for high-precision manufacturing facilities like aerospace and defense.',
+                't3-btn': 'Access Closed',
+                'footer-text': 'Built for modern aerospace and mechanical design.'
+            }
+        };
+
+        // Dil Değiştirme Fonksiyonu
+        function setLanguage(lang) {
+            // HTML içindeki data-i18n etiketine sahip tüm metinleri değiştir
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+
+            // Butonlardaki aktif/pasif renklerini ayarla
+            document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+    </script>
 </body>
 </html>
