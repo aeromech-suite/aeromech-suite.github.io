@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AeroMech Suite | Advanced Engineering Tools</title>
-    <!-- Dünyanın en popüler modern kurumsal yazı tipi: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ANALYZER PRO İLE BİREBİR AYNI RENK PALETİ */
         :root {
-            --bg: #030712; /* Çok derin lacivert/siyah */
-            --panel: #111827; /* İnce arka plan */
-            --primary: #00E5FF; /* Havacılık / Teknoloji Camgöbeği */
-            --primary-glow: rgba(0, 229, 255, 0.15);
+            --bg: #0b1120;
+            --panel: #1e293b;
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --primary-glow: rgba(56, 189, 248, 0.15);
             --text: #f8fafc;
             --muted: #94a3b8;
-            --border: #1e293b;
+            --border: #334155;
         }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             margin: 0;
@@ -30,27 +31,26 @@
             z-index: 1;
         }
 
-        /* Mühendislik Hissi Veren Arka Plan Izgarası */
+        /* Mühendislik Arka Plan Izgarası */
         .bg-grid {
             position: absolute;
             top: 0; left: 0; right: 0; height: 100vh;
-            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(51, 65, 85, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
             background-size: 40px 40px;
-            opacity: 0.3;
+            opacity: 0.4;
             z-index: -1;
             mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
             -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
         }
         
-        /* Glassmorphic (Cam) Navbar */
         .navbar {
             width: 100%;
-            padding: 20px 50px;
+            padding: 20px 40px;
             box-sizing: border-box;
-            background: rgba(3, 7, 18, 0.6);
+            background: rgba(11, 17, 32, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -69,10 +69,9 @@
         }
         .brand span { color: var(--primary); font-weight: 400; }
         
-        /* Şık Dil Değiştirici */
         .lang-switch {
             display: flex;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--panel);
             padding: 4px;
             border-radius: 8px;
             border: 1px solid var(--border);
@@ -90,13 +89,12 @@
             font-family: 'Inter', sans-serif;
         }
         .lang-btn.active {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
         }
         .lang-btn:hover:not(.active) { color: var(--text); }
 
-        /* Minimalist Karşılama Alanı */
         .hero {
             text-align: center;
             padding: 100px 20px 60px 20px;
@@ -108,7 +106,7 @@
             padding: 6px 16px;
             background: var(--primary-glow);
             color: var(--primary);
-            border: 1px solid rgba(0, 229, 255, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             border-radius: 30px;
             font-size: 12px;
             font-weight: 600;
@@ -132,7 +130,6 @@
             margin: 0 auto;
         }
 
-        /* Araçlar Galerisi */
         .container {
             max-width: 1150px;
             width: 100%;
@@ -145,34 +142,34 @@
             gap: 30px;
         }
 
-        /* Modern Kart Tasarımları */
         .tool-card {
             background: var(--panel);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 35px 30px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .tool-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(0, 229, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--primary-glow);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px var(--primary-glow);
         }
         .tool-icon {
             color: var(--primary);
             margin-bottom: 25px;
-            background: rgba(0, 229, 255, 0.05);
+            background: var(--bg);
             width: 54px;
             height: 54px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 229, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
         .tool-card h3 { 
             margin: 0 0 12px 0; 
@@ -185,27 +182,29 @@
             color: var(--muted);
             line-height: 1.6;
             margin-bottom: 35px;
-            font-weight: 300;
+            font-weight: 400;
             flex-grow: 1;
         }
         .launch-btn {
             text-align: center;
-            background: var(--text);
-            color: var(--bg);
+            background: var(--primary);
+            color: #fff;
             padding: 14px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(56,189,248,0.2);
         }
-        .launch-btn:hover { background: var(--primary); color: #000; }
+        .launch-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
         
         .btn-disabled {
             background: transparent;
             color: var(--muted);
             border: 1px solid var(--border);
             pointer-events: none;
+            box-shadow: none;
         }
         
         .status-badge {
@@ -233,10 +232,10 @@
             text-align: center;
             color: #475569;
             font-size: 13px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-weight: 300;
+            border-top: 1px solid var(--border);
+            font-weight: 400;
         }
-        footer a { color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s;}
+        footer a { color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s;}
         footer a:hover { color: var(--primary); }
         
         @media (max-width: 768px) {
@@ -251,7 +250,6 @@
 
     <div class="navbar">
         <div class="brand">
-            <!-- Vektörel Kurumsal Logo -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12 2 2 22 12 17 22 22 12 2"></polygon>
             </svg>
@@ -289,7 +287,7 @@
             <!-- 2. ARAÇ -->
             <div class="tool-card">
                 <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t2-badge">Geliştiriliyor</span></div>
-                <div class="tool-icon" style="color: var(--muted); border-color: transparent; background: rgba(255,255,255,0.03);">
+                <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path>
                         <path d="M12.59 14.41A2 2 0 1 0 14 16H2"></path>
@@ -304,7 +302,7 @@
             <!-- 3. ARAÇ -->
             <div class="tool-card">
                 <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t3-badge">Geliştiriliyor</span></div>
-                <div class="tool-icon" style="color: var(--muted); border-color: transparent; background: rgba(255,255,255,0.03);">
+                <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -318,12 +316,11 @@
     </div>
 
     <footer>
-        &copy; 2026 AeroMech Suite. Platform architectures developed by <a href="https://www.linkedin.com/in/sametyeşiltaş" target="_blank">Samet Yeşiltaş (APİG TECH)</a>.<br>
+        &copy; 2026 AeroMech Suite. Platform architectures developed by <a href="https://www.linkedin.com/in/sametyeşiltaş" target="_blank">Samet Yeşiltaş</a>.<br>
         <span data-i18n="footer-text" style="margin-top: 5px; display: inline-block;">Modern havacılık ve makine mühendisliği için tasarlanmıştır.</span>
     </footer>
 
     <script>
-        // Dil Sözlüğü
         const translations = {
             'tr': {
                 'hero-badge': 'AEROMECH EKOSİSTEMİ',
@@ -357,7 +354,6 @@
             }
         };
 
-        // Dil Değiştirme Fonksiyonu
         function setLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
