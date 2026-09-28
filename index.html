@@ -268,8 +268,13 @@
             font-weight: 400;
             flex-grow: 1;
         }
+        
+        /* Buton ve İkon Düzenlemesi */
         .launch-btn {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
             background: var(--primary);
             color: #fff;
             padding: 14px 20px;
@@ -281,6 +286,11 @@
             box-shadow: 0 4px 15px rgba(56,189,248,0.2);
         }
         .launch-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .launch-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2.5;
+        }
         
         .btn-disabled {
             background: transparent;
@@ -289,6 +299,7 @@
             pointer-events: none;
             box-shadow: none;
         }
+        .btn-disabled svg { display: none; } /* Erişime kapalıysa ikonu gizle */
         
         .status-badge {
             position: absolute;
@@ -356,7 +367,7 @@
             </div>
             
             <a href="#" class="nav-link" data-i18n="nav-docs">Dokümantasyon</a>
-            <a href="https://github.com/aeromech-suite" class="nav-link" target="_blank" data-i18n="nav-github">GitHub</a>
+            <a href="#" class="nav-link" data-i18n="nav-about">Hakkımızda</a>
         </nav>
 
         <div class="lang-switch">
@@ -385,7 +396,10 @@
                 </div>
                 <h3>Material Analyzer Pro</h3>
                 <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
-                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank" data-i18n="t1-btn">Simülasyonu Başlat</a>
+                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank">
+                    <span data-i18n="t1-btn">Simülasyonu Başlat</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </div>
 
             <!-- 2. ARAÇ -->
@@ -400,7 +414,10 @@
                 </div>
                 <h3>AeroFoil Flow Dynamics</h3>
                 <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
-                <a href="#" class="launch-btn btn-disabled" data-i18n="t2-btn">Erişime Kapalı</a>
+                <a href="#" class="launch-btn btn-disabled">
+                    <span data-i18n="t2-btn">Erişime Kapalı</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </div>
             
             <!-- 3. ARAÇ -->
@@ -414,7 +431,10 @@
                 </div>
                 <h3>CNC G-Code Optimizer</h3>
                 <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
-                <a href="cnc-optimizer.html" target="_blank" class="launch-btn" data-i18n="t3-btn">Uygulamayı Başlat</a>
+                <a href="cnc-optimizer.html" target="_blank" class="launch-btn">
+                    <span data-i18n="t3-btn">Uygulamayı Başlat</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -443,7 +463,7 @@
                 'nav-home': 'Ana Sayfa',
                 'nav-modules': 'Modüller',
                 'nav-docs': 'Dokümantasyon',
-                'nav-github': 'GitHub'
+                'nav-about': 'Hakkımızda'
             },
             'en': {
                 'hero-badge': 'AEROMECH ECOSYSTEM',
@@ -462,7 +482,7 @@
                 'nav-home': 'Home',
                 'nav-modules': 'Modules',
                 'nav-docs': 'Documentation',
-                'nav-github': 'GitHub'
+                'nav-about': 'About Us'
             }
         };
 
