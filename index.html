@@ -77,6 +77,66 @@
         }
         .brand span { color: var(--primary); font-weight: 400; }
         
+        /* --- YENİ NAVİGASYON MENÜSÜ --- */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Dropdown (Açılır Menü) Tasarımı */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            min-width: 220px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            padding: 8px 0;
+            z-index: 101;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeInUp 0.2s ease-out forwards;
+        }
+        .dropdown-content a {
+            color: var(--muted);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            transition: all 0.2s;
+        }
+        .dropdown-content a:hover {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.05);
+            padding-left: 24px; /* Üzerine gelince hafif sağa kayma efekti */
+        }
+        /* -------------------------------- */
+
         .lang-switch {
             display: flex;
             background: var(--panel);
@@ -269,6 +329,7 @@
         @media (max-width: 768px) {
             .navbar { padding: 20px; }
             .hero h1 { font-size: 36px; }
+            .nav-links { display: none; } /* Mobilde menüyü gizler */
         }
     </style>
 </head>
@@ -283,6 +344,27 @@
             </svg>
             AeroMech <span>Suite</span>
         </div>
+        
+        <!-- YENİ EKLENEN MENÜ -->
+        <nav class="nav-links">
+            <a href="#" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
+            
+            <div class="dropdown">
+                <a href="#" class="nav-link" data-i18n="nav-modules" style="display: flex; align-items: center; gap: 4px;">
+                    Modüller 
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="dropdown-content">
+                    <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" target="_blank">Material Analyzer Pro</a>
+                    <a href="#">AeroFoil Flow Dynamics</a>
+                    <a href="cnc-optimizer.html">CNC G-Code Optimizer</a>
+                </div>
+            </div>
+            
+            <a href="#" class="nav-link" data-i18n="nav-docs">Dokümantasyon</a>
+            <a href="https://github.com/aeromech-suite" class="nav-link" target="_blank" data-i18n="nav-github">GitHub</a>
+        </nav>
+
         <div class="lang-switch">
             <button class="lang-btn active" id="btn-tr" onclick="setLanguage('tr')">TR</button>
             <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
@@ -363,7 +445,11 @@
                 't3-badge': 'V 1.0 Yayında',
                 't3-desc': 'Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.',
                 't3-btn': 'Uygulamayı Başlat',
-                'footer-text': 'Modern havacılık ve makine mühendisliği için tasarlanmıştır.'
+                'footer-text': 'Modern havacılık ve makine mühendisliği için tasarlanmıştır.',
+                'nav-home': 'Ana Sayfa',
+                'nav-modules': 'Modüller',
+                'nav-docs': 'Dokümantasyon',
+                'nav-github': 'GitHub'
             },
             'en': {
                 'hero-badge': 'AEROMECH ECOSYSTEM',
@@ -378,7 +464,11 @@
                 't3-badge': 'V 1.0 Live',
                 't3-desc': 'Cloud-based G-Code converter optimizing machining paths of mechanical designs for high-precision manufacturing facilities like aerospace and defense.',
                 't3-btn': 'Launch Application',
-                'footer-text': 'Designed for modern aerospace and mechanical engineering.'
+                'footer-text': 'Designed for modern aerospace and mechanical engineering.',
+                'nav-home': 'Home',
+                'nav-modules': 'Modules',
+                'nav-docs': 'Documentation',
+                'nav-github': 'GitHub'
             }
         };
 
@@ -386,7 +476,13 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    element.innerText = translations[lang][key];
+                    // İçinde SVG olan elementleri (örneğin "Modüller" menüsü) bozmamak için kontrol yapıyoruz
+                    if (element.children.length > 0) {
+                        // Sadece ilk metin düğümünü (text node) değiştiriyoruz
+                        element.childNodes[0].nodeValue = translations[lang][key] + " ";
+                    } else {
+                        element.innerText = translations[lang][key];
+                    }
                 }
             });
             document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
