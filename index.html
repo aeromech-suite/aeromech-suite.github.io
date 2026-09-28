@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Open Graph / LinkedIn Meta Etiketleri -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aeromech-suite.github.io/"> 
     <meta property="og:title" content="AeroMech Suite | Advanced Engineering Tools">
@@ -72,6 +71,7 @@
             align-items: center;
             gap: 12px;
             letter-spacing: -0.5px;
+            cursor: pointer;
         }
         .brand span { color: var(--primary); font-weight: 400; }
         
@@ -88,16 +88,11 @@
             transition: color 0.2s;
             position: relative;
             font-family: 'Inter', sans-serif;
-            cursor: pointer; /* Modal için tıklanabilir imleç */
+            cursor: pointer; 
         }
-        .nav-link:hover {
-            color: var(--primary);
-        }
+        .nav-link:hover { color: var(--primary); }
         
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -114,10 +109,7 @@
             padding: 8px 0;
             z-index: 101;
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            animation: fadeInUp 0.2s ease-out forwards;
-        }
+        .dropdown:hover .dropdown-content { display: block; animation: fadeInUp 0.2s ease-out forwards; }
         .dropdown-content a {
             color: var(--muted);
             padding: 12px 20px;
@@ -126,294 +118,72 @@
             font-size: 13px;
             font-weight: 400;
             transition: all 0.2s;
+            cursor: pointer;
         }
-        .dropdown-content a:hover {
-            color: var(--primary);
-            background: rgba(56, 189, 248, 0.05);
-            padding-left: 24px; 
-        }
+        .dropdown-content a:hover { color: var(--primary); background: rgba(56, 189, 248, 0.05); padding-left: 24px; }
 
         .lang-switch {
-            display: flex;
-            background: var(--panel);
-            padding: 4px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            display: flex; background: var(--panel); padding: 4px; border-radius: 8px; border: 1px solid var(--border);
         }
         .lang-btn {
-            background: transparent;
-            color: var(--muted);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
+            background: transparent; color: var(--muted); border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 13px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;
         }
-        .lang-btn.active {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
-        }
+        .lang-btn.active { background: var(--primary); color: #fff; box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2); }
         .lang-btn:hover:not(.active) { color: var(--text); }
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px 60px 20px;
-            width: 100%;
-            max-width: 800px;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--primary-glow);
-            color: var(--primary);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 0 0 20px 0;
-            color: var(--text);
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-        }
-        .hero p {
-            font-size: 18px;
-            color: var(--muted);
-            font-weight: 300;
-            line-height: 1.6;
-            margin: 0 auto;
-        }
+        .hero { text-align: center; padding: 100px 20px 60px 20px; width: 100%; max-width: 800px; }
+        .hero-badge { display: inline-block; padding: 6px 16px; background: var(--primary-glow); color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 30px; font-size: 12px; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .hero h1 { font-size: 48px; font-weight: 700; margin: 0 0 20px 0; color: var(--text); letter-spacing: -1.5px; line-height: 1.1; }
+        .hero p { font-size: 18px; color: var(--muted); font-weight: 300; line-height: 1.6; margin: 0 auto; }
 
-        .container {
-            max-width: 1150px;
-            width: 100%;
-            padding: 20px 20px 80px 20px;
-            box-sizing: border-box;
-        }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
+        .container { max-width: 1150px; width: 100%; padding: 20px 20px 80px 20px; box-sizing: border-box; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .tool-card {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 35px 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
+            background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 35px 30px; transition: all 0.3s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: fadeInUp 0.6s ease-out forwards; opacity: 0;
         }
-        .tool-card:nth-child(1) { animation-delay: 0.1s; }
-        .tool-card:nth-child(2) { animation-delay: 0.3s; }
-        .tool-card:nth-child(3) { animation-delay: 0.5s; }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px var(--primary-glow);
-        }
-        .tool-icon {
-            color: var(--primary);
-            margin-bottom: 25px;
-            background: var(--bg);
-            width: 54px;
-            height: 54px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-        .tool-card h3 { 
-            margin: 0 0 12px 0; 
-            font-size: 20px; 
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-        .tool-card p {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.6;
-            margin-bottom: 35px;
-            font-weight: 400;
-            flex-grow: 1;
-        }
+        .tool-card:nth-child(1) { animation-delay: 0.1s; } .tool-card:nth-child(2) { animation-delay: 0.3s; } .tool-card:nth-child(3) { animation-delay: 0.5s; }
+        .tool-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 40px var(--primary-glow); }
+        .tool-icon { color: var(--primary); margin-bottom: 25px; background: var(--bg); width: 54px; height: 54px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: 1px solid var(--border); }
+        .tool-card h3 { margin: 0 0 12px 0; font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
+        .tool-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 35px; font-weight: 400; flex-grow: 1; }
         
         .launch-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(56,189,248,0.2);
+            display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--primary); color: #fff; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s; box-shadow: 0 4px 15px rgba(56,189,248,0.2); border: none; cursor: pointer; font-family: 'Inter', sans-serif;
         }
         .launch-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
-        .launch-btn svg {
-            width: 16px;
-            height: 16px;
-            stroke-width: 2.5;
-        }
-        
-        .btn-disabled {
-            background: transparent;
-            color: var(--muted);
-            border: 1px solid var(--border);
-            pointer-events: none;
-            box-shadow: none;
-        }
+        .launch-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
+        .btn-disabled { background: transparent; color: var(--muted); border: 1px solid var(--border); pointer-events: none; box-shadow: none; }
         .btn-disabled svg { display: none; }
         
-        .status-badge {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            color: var(--muted);
-            font-size: 12px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .status-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-        }
+        .status-badge { position: absolute; top: 30px; right: 30px; color: var(--muted); font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
         .dot-live { background: #10b981; box-shadow: 0 0 10px rgba(16,185,129,0.5); }
         .dot-dev { background: var(--border); }
 
-        /* --- MODAL (AÇILIR PENCERE) TASARIMLARI --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(11, 17, 32, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .modal-content {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            width: 100%;
-            max-width: 700px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: modalFadeIn 0.3s ease-out;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .modal-header {
-            padding: 24px 30px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-header h2 {
-            margin: 0;
-            font-size: 22px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11, 17, 32, 0.7); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; width: 100%; max-width: 700px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); animation: modalFadeIn 0.3s ease-out; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .modal-header { padding: 24px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { margin: 0; font-size: 22px; color: var(--text); display: flex; align-items: center; gap: 10px; }
         .modal-header h2 svg { color: var(--primary); }
-        .close-btn {
-            background: transparent;
-            border: none;
-            color: var(--muted);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
+        .close-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; padding: 8px; border-radius: 6px; transition: all 0.2s; }
         .close-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
-        
-        .modal-body {
-            padding: 30px;
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        .modal-body h3 {
-            color: var(--text);
-            font-size: 18px;
-            margin: 25px 0 10px 0;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
-        }
+        .modal-body { padding: 30px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+        .modal-body h3 { color: var(--text); font-size: 18px; margin: 25px 0 10px 0; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
         .modal-body h3:first-child { margin-top: 0; }
         .modal-body ul { padding-left: 20px; margin-bottom: 20px; }
         .modal-body li { margin-bottom: 8px; }
-        
-        /* Modal İçi Tasarım Blokları (Hakkımızda) */
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .vision-card {
-            background: var(--bg);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
+        .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .vision-card { background: var(--bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
         .vision-card h4 { color: var(--primary); margin: 0 0 10px 0; font-size: 15px; }
         .vision-card p { margin: 0; font-size: 13px; line-height: 1.5; }
 
-        footer {
-            margin-top: auto;
-            width: 100%;
-            padding: 40px;
-            text-align: center;
-            color: #475569;
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            font-weight: 400;
-        }
+        footer { margin-top: auto; width: 100%; padding: 40px; text-align: center; color: #475569; font-size: 13px; border-top: 1px solid var(--border); font-weight: 400; }
         
-        @media (max-width: 768px) {
-            .navbar { padding: 20px; }
-            .hero h1 { font-size: 36px; }
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { .navbar { padding: 20px; } .hero h1 { font-size: 36px; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -421,7 +191,7 @@
     <div class="bg-grid"></div>
 
     <div class="navbar">
-        <div class="brand">
+        <div class="brand" onclick="closeApp()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12 2 2 22 12 17 22 22 12 2"></polygon>
             </svg>
@@ -429,21 +199,17 @@
         </div>
         
         <nav class="nav-links">
-            <a href="#" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
-            
+            <a onclick="closeApp()" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
             <div class="dropdown">
-                <a href="#" class="nav-link" data-i18n="nav-modules" style="display: flex; align-items: center; gap: 4px;">
+                <a class="nav-link" data-i18n="nav-modules" style="display: flex; align-items: center; gap: 4px;">
                     Modüller 
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <div class="dropdown-content">
-                    <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" target="_blank">Material Analyzer Pro</a>
-                    <a href="#">AeroFoil Flow Dynamics</a>
-                    <a href="cnc-optimizer.html" target="_blank">CNC G-Code Optimizer</a>
+                    <a onclick="openApp('engineering-material-analyzer.html')">Material Analyzer Pro</a>
+                    <a onclick="openApp('cnc-optimizer.html')">CNC G-Code Optimizer</a>
                 </div>
             </div>
-            
-            <!-- Modal Açıcı Linkler -->
             <a onclick="openModal('docsModal')" class="nav-link" data-i18n="nav-docs">Dokümantasyon</a>
             <a onclick="openModal('aboutModal')" class="nav-link" data-i18n="nav-about">Kurumsal Vizyon</a>
         </nav>
@@ -454,17 +220,77 @@
         </div>
     </div>
 
+    <!-- UYGULAMA İÇİN IFRAME BÖLÜMÜ -->
+    <div id="app-container" style="display:none; width: 100%; height: calc(100vh - 73px);">
+        <iframe id="app-frame" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <!-- ANA SAYFA İÇERİĞİ -->
+    <div id="main-content" style="width:100%; display:flex; flex-direction:column; align-items:center;">
+        <div class="hero">
+            <div class="hero-badge" data-i18n="hero-badge">AeroMech Ekosistemi</div>
+            <h1 data-i18n="hero-title">Yeni Nesil Tasarım & Simülasyon Platformu</h1>
+            <p data-i18n="hero-desc">Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
+        </div>
+
+        <div class="container">
+            <div class="tools-grid">
+                <!-- 1. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t1-badge">V 2.1 Yayında</span></div>
+                    <div class="tool-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    </div>
+                    <h3>Material Analyzer Pro</h3>
+                    <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
+                    <button onclick="openApp('engineering-material-analyzer.html')" class="launch-btn">
+                        <span data-i18n="t1-btn">Simülasyonu Başlat</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </button>
+                </div>
+
+                <!-- 2. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t2-badge">Geliştiriliyor</span></div>
+                    <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path><path d="M12.59 14.41A2 2 0 1 0 14 16H2"></path><path d="M15.73 7.73A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                    </div>
+                    <h3>AeroFoil Flow Dynamics</h3>
+                    <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
+                    <button class="launch-btn btn-disabled">
+                        <span data-i18n="t2-btn">Erişime Kapalı</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </button>
+                </div>
+                
+                <!-- 3. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t3-badge">V 1.0 Yayında</span></div>
+                    <div class="tool-icon" style="color: var(--primary); border-color: var(--border); background: var(--bg);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
+                    <h3>CNC G-Code Optimizer</h3>
+                    <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
+                    <button onclick="openApp('cnc-optimizer.html')" class="launch-btn">
+                        <span data-i18n="t3-btn">Uygulamayı Başlat</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 AeroMech Suite.<br>
+            <span data-i18n="footer-text" style="margin-top: 5px; display: inline-block;">Modern havacılık ve makine mühendisliği için tasarlanmıştır.</span>
+        </footer>
+    </div>
+
     <!-- MODAL: DOKÜMANTASYON -->
     <div class="modal-overlay" id="docsModal" onclick="closeModal(event)">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 data-i18n="doc-title">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    Teknik Dokümantasyon
-                </h2>
-                <button class="close-btn" onclick="document.getElementById('docsModal').style.display='none'">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
+                <h2 data-i18n="doc-title"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Teknik Dokümantasyon</h2>
+                <button class="close-btn" onclick="document.getElementById('docsModal').style.display='none'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
             </div>
             <div class="modal-body">
                 <h3 data-i18n="doc-h1">Hesaplama Standartları</h3>
@@ -486,184 +312,73 @@
     <div class="modal-overlay" id="aboutModal" onclick="closeModal(event)">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 data-i18n="about-title">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                    AeroMech Felsefesi
-                </h2>
-                <button class="close-btn" onclick="document.getElementById('aboutModal').style.display='none'">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
+                <h2 data-i18n="about-title"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> AeroMech Felsefesi</h2>
+                <button class="close-btn" onclick="document.getElementById('aboutModal').style.display='none'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
             </div>
             <div class="modal-body">
                 <p data-i18n="about-p1">AeroMech Suite, modern mühendislik hesaplamalarının karmaşıklığını, bulut tabanlı ve erişilebilir bir SaaS (Software as a Service) platformuna dönüştürmek amacıyla yaratılmıştır.</p>
                 <p data-i18n="about-p2">Platformun temelinde; <strong>İstanbul Teknik Üniversitesi (İTÜ)</strong> ekosisteminin akademik disiplini ve havacılık-savunma sanayisindeki (itki sistemleri, aviyonik testler, uydu mekanizmaları) gerçek dünya saha tecrübeleri yatmaktadır.</p>
-                
                 <div class="vision-grid">
-                    <div class="vision-card">
-                        <h4 data-i18n="about-c1-t">Akademik Temel</h4>
-                        <p data-i18n="about-c1-d">Gelişmiş mukavemet ve akışkanlar dinamiği teorileri, mühendislik yaklaşımlarıyla koda dökülür.</p>
-                    </div>
-                    <div class="vision-card">
-                        <h4 data-i18n="about-c2-t">Endüstriyel Odak</h4>
-                        <p data-i18n="about-c2-d">Talaşlı imalattan uçuş öncesi testlere (PFR) kadar sahanın gerçek ihtiyaçlarına pratik çözümler sunar.</p>
-                    </div>
-                    <div class="vision-card">
-                        <h4 data-i18n="about-c3-t">Tasarım & UI</h4>
-                        <p data-i18n="about-c3-d">Mühendislerin verilere odaklanabilmesi için gereksiz kalabalıktan uzak, temiz arayüzler hedeflenir.</p>
-                    </div>
+                    <div class="vision-card"><h4 data-i18n="about-c1-t">Akademik Temel</h4><p data-i18n="about-c1-d">Gelişmiş mukavemet ve akışkanlar dinamiği teorileri, mühendislik yaklaşımlarıyla koda dökülür.</p></div>
+                    <div class="vision-card"><h4 data-i18n="about-c2-t">Endüstriyel Odak</h4><p data-i18n="about-c2-d">Talaşlı imalattan uçuş öncesi testlere (PFR) kadar sahanın gerçek ihtiyaçlarına pratik çözümler sunar.</p></div>
+                    <div class="vision-card"><h4 data-i18n="about-c3-t">Tasarım & UI</h4><p data-i18n="about-c3-d">Mühendislerin verilere odaklanabilmesi için gereksiz kalabalıktan uzak, temiz arayüzler hedeflenir.</p></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="hero">
-        <div class="hero-badge" data-i18n="hero-badge">AeroMech Ekosistemi</div>
-        <h1 data-i18n="hero-title">Yeni Nesil Tasarım & Simülasyon Platformu</h1>
-        <p data-i18n="hero-desc">Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
-    </div>
-
-    <div class="container">
-        <div class="tools-grid">
-            <!-- 1. ARAÇ -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t1-badge">V 2.1 Yayında</span></div>
-                <div class="tool-icon">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                </div>
-                <h3>Material Analyzer Pro</h3>
-                <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
-                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank">
-                    <span data-i18n="t1-btn">Simülasyonu Başlat</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-            </div>
-
-            <!-- 2. ARAÇ -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t2-badge">Geliştiriliyor</span></div>
-                <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path><path d="M12.59 14.41A2 2 0 1 0 14 16H2"></path><path d="M15.73 7.73A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
-                </div>
-                <h3>AeroFoil Flow Dynamics</h3>
-                <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
-                <a href="#" class="launch-btn btn-disabled">
-                    <span data-i18n="t2-btn">Erişime Kapalı</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-            </div>
-            
-            <!-- 3. ARAÇ -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t3-badge">V 1.0 Yayında</span></div>
-                <div class="tool-icon" style="color: var(--primary); border-color: var(--border); background: var(--bg);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                </div>
-                <h3>CNC G-Code Optimizer</h3>
-                <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
-                <a href="cnc-optimizer.html" target="_blank" class="launch-btn">
-                    <span data-i18n="t3-btn">Uygulamayı Başlat</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        &copy; 2026 AeroMech Suite.<br>
-        <span data-i18n="footer-text" style="margin-top: 5px; display: inline-block;">Modern havacılık ve makine mühendisliği için tasarlanmıştır.</span>
-    </footer>
 
     <script>
-        // Modal Yönetimi
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+        // --- IFRAME UYGULAMA YÖNETİMİ ---
+        function openApp(url) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+            document.getElementById('app-frame').src = url;
+            window.scrollTo(0, 0); 
         }
 
+        function closeApp() {
+            document.getElementById('app-container').style.display = 'none';
+            document.getElementById('app-frame').src = ''; 
+            document.getElementById('main-content').style.display = 'flex';
+        }
+
+        window.addEventListener('message', function(event) {
+            if (event.data === 'closeApp') {
+                closeApp();
+            }
+        });
+
+        // --- MODAL YÖNETİMİ ---
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
         function closeModal(event) {
-            // Sadece arka plana tıklanırsa kapat
             if(event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
         }
 
+        // --- ÇEVİRİ YÖNETİMİ ---
         const translations = {
             'tr': {
-                'hero-badge': 'AEROMECH EKOSİSTEMİ',
-                'hero-title': 'Yeni Nesil Tasarım & Simülasyon Platformu',
-                'hero-desc': 'Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.',
-                't1-badge': 'V 2.1 Yayında',
-                't1-desc': 'Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.',
-                't1-btn': 'Simülasyonu Başlat',
-                't2-badge': 'Geliştiriliyor',
-                't2-desc': 'Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.',
-                't2-btn': 'Erişime Kapalı',
-                't3-badge': 'V 1.0 Yayında',
-                't3-desc': 'Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.',
-                't3-btn': 'Uygulamayı Başlat',
-                'footer-text': 'Modern havacılık ve makine mühendisliği için tasarlanmıştır.',
-                'nav-home': 'Ana Sayfa',
-                'nav-modules': 'Modüller',
-                'nav-docs': 'Dokümantasyon',
-                'nav-about': 'Kurumsal Vizyon',
-                // Dokümantasyon Modal TR
-                'doc-title': 'Teknik Dokümantasyon',
-                'doc-h1': 'Hesaplama Standartları',
-                'doc-p1': 'AeroMech Suite, havacılık ve uzay endüstrisindeki toleranslara uygun şekilde çalışır. Tüm simülasyon araçları, global mühendislik standartlarını referans alır.',
-                'doc-l1': '<strong>Material Analyzer Pro:</strong> Sehim ve gerilme analizleri, klasik <em>Euler-Bernoulli Kiriş Teorisi</em> üzerine inşa edilmiş analitik algoritmalar ile hesaplanır. Sonlu Elemanlar (FEA) yaklaşımlarıyla uyumludur.',
-                'doc-l2': '<strong>CNC Optimizer:</strong> .sldprt tabanlı CAM verilerinin talaşlı imalat süreçlerinde yüksek hızda ve minimum takım aşınmasıyla işlenmesini sağlayan G-Code dönüştürme ve temizleme algoritmalarını kullanır.',
-                'doc-h2': 'Sürüm Notları (v2.1)',
-                'doc-l3': 'Malzeme kütüphanesine Havacılık Alüminyumu (Al 7075-T6) ve Titanyum alaşımları eklendi.',
-                'doc-l4': 'Bulut tabanlı eşzamanlı hesaplama süreleri optimize edildi.',
-                // Vizyon Modal TR
-                'about-title': 'AeroMech Felsefesi',
-                'about-p1': 'AeroMech Suite, modern mühendislik hesaplamalarının karmaşıklığını, bulut tabanlı ve erişilebilir bir SaaS (Software as a Service) platformuna dönüştürmek amacıyla yaratılmıştır.',
-                'about-p2': 'Platformun temelinde; <strong>İstanbul Teknik Üniversitesi (İTÜ)</strong> ekosisteminin akademik disiplini ve havacılık-savunma sanayisindeki (itki sistemleri, aviyonik testler, uydu mekanizmaları) gerçek dünya saha tecrübeleri yatmaktadır.',
-                'about-c1-t': 'Akademik Temel',
-                'about-c1-d': 'Gelişmiş mukavemet ve akışkanlar dinamiği teorileri, mühendislik yaklaşımlarıyla koda dökülür.',
-                'about-c2-t': 'Endüstriyel Odak',
-                'about-c2-d': 'Talaşlı imalattan uçuş öncesi testlere (PFR) kadar sahanın gerçek ihtiyaçlarına pratik çözümler sunar.',
-                'about-c3-t': 'Tasarım & UI',
-                'about-c3-d': 'Mühendislerin verilere odaklanabilmesi için gereksiz kalabalıktan uzak, temiz arayüzler hedeflenir.'
+                'hero-badge': 'AEROMECH EKOSİSTEMİ', 'hero-title': 'Yeni Nesil Tasarım & Simülasyon Platformu', 'hero-desc': 'Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.',
+                't1-badge': 'V 2.1 Yayında', 't1-desc': 'Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.', 't1-btn': 'Simülasyonu Başlat',
+                't2-badge': 'Geliştiriliyor', 't2-desc': 'Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.', 't2-btn': 'Erişime Kapalı',
+                't3-badge': 'V 1.0 Yayında', 't3-desc': 'Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.', 't3-btn': 'Uygulamayı Başlat',
+                'footer-text': 'Modern havacılık ve makine mühendisliği için tasarlanmıştır.', 'nav-home': 'Ana Sayfa', 'nav-modules': 'Modüller', 'nav-docs': 'Dokümantasyon', 'nav-about': 'Kurumsal Vizyon',
+                'doc-title': 'Teknik Dokümantasyon', 'doc-h1': 'Hesaplama Standartları', 'doc-p1': 'AeroMech Suite, havacılık ve uzay endüstrisindeki toleranslara uygun şekilde çalışır. Tüm simülasyon araçları, global mühendislik standartlarını referans alır.', 'doc-l1': '<strong>Material Analyzer Pro:</strong> Sehim ve gerilme analizleri, klasik <em>Euler-Bernoulli Kiriş Teorisi</em> üzerine inşa edilmiş analitik algoritmalar ile hesaplanır. Sonlu Elemanlar (FEA) yaklaşımlarıyla uyumludur.', 'doc-l2': '<strong>CNC Optimizer:</strong> .sldprt tabanlı CAM verilerinin talaşlı imalat süreçlerinde yüksek hızda ve minimum takım aşınmasıyla işlenmesini sağlayan G-Code dönüştürme ve temizleme algoritmalarını kullanır.', 'doc-h2': 'Sürüm Notları (v2.1)', 'doc-l3': 'Malzeme kütüphanesine Havacılık Alüminyumu (Al 7075-T6) ve Titanyum alaşımları eklendi.', 'doc-l4': 'Bulut tabanlı eşzamanlı hesaplama süreleri optimize edildi.',
+                'about-title': 'AeroMech Felsefesi', 'about-p1': 'AeroMech Suite, modern mühendislik hesaplamalarının karmaşıklığını, bulut tabanlı ve erişilebilir bir SaaS (Software as a Service) platformuna dönüştürmek amacıyla yaratılmıştır.', 'about-p2': 'Platformun temelinde; <strong>İstanbul Teknik Üniversitesi (İTÜ)</strong> ekosisteminin akademik disiplini ve havacılık-savunma sanayisindeki (itki sistemleri, aviyonik testler, uydu mekanizmaları) gerçek dünya saha tecrübeleri yatmaktadır.', 'about-c1-t': 'Akademik Temel', 'about-c1-d': 'Gelişmiş mukavemet ve akışkanlar dinamiği teorileri, mühendislik yaklaşımlarıyla koda dökülür.', 'about-c2-t': 'Endüstriyel Odak', 'about-c2-d': 'Talaşlı imalattan uçuş öncesi testlere (PFR) kadar sahanın gerçek ihtiyaçlarına pratik çözümler sunar.', 'about-c3-t': 'Tasarım & UI', 'about-c3-d': 'Mühendislerin verilere odaklanabilmesi için gereksiz kalabalıktan uzak, temiz arayüzler hedeflenir.'
             },
             'en': {
-                'hero-badge': 'AEROMECH ECOSYSTEM',
-                'hero-title': 'Next-Gen Design & Simulation Platform',
-                'hero-desc': 'Cloud-based, high-precision engineering tools developed to accelerate aerospace, mechanical design, and manufacturing processes.',
-                't1-badge': 'V 2.1 Live',
-                't1-desc': 'Enterprise FEA tool calculating static load scenarios for machine parts and structural profiles, providing material-based deflection, stress, and cost optimization.',
-                't1-btn': 'Launch Simulation',
-                't2-badge': 'In Development',
-                't2-desc': 'Aerodynamic analysis module calculating Lift and Drag coefficients based on wind tunnel data of aircraft wing profiles.',
-                't2-btn': 'Access Closed',
-                't3-badge': 'V 1.0 Live',
-                't3-desc': 'Cloud-based G-Code converter optimizing machining paths of mechanical designs for high-precision manufacturing facilities like aerospace and defense.',
-                't3-btn': 'Launch Application',
-                'footer-text': 'Designed for modern aerospace and mechanical engineering.',
-                'nav-home': 'Home',
-                'nav-modules': 'Modules',
-                'nav-docs': 'Documentation',
-                'nav-about': 'Corporate Vision',
-                // Dokümantasyon Modal EN
-                'doc-title': 'Technical Documentation',
-                'doc-h1': 'Calculation Standards',
-                'doc-p1': 'AeroMech Suite operates in accordance with aerospace industry tolerances. All simulation tools reference global engineering standards.',
-                'doc-l1': '<strong>Material Analyzer Pro:</strong> Deflection and stress analyses are calculated using analytical algorithms built on classic <em>Euler-Bernoulli Beam Theory</em>. It is compatible with Finite Element Analysis (FEA) approaches.',
-                'doc-l2': '<strong>CNC Optimizer:</strong> Utilizes G-Code conversion and cleaning algorithms that ensure high-speed machining with minimal tool wear for .sldprt-based CAM data.',
-                'doc-h2': 'Release Notes (v2.1)',
-                'doc-l3': 'Aerospace Aluminum (Al 7075-T6) and Titanium alloys added to the material library.',
-                'doc-l4': 'Cloud-based concurrent calculation times optimized.',
-                // Vizyon Modal EN
-                'about-title': 'AeroMech Philosophy',
-                'about-p1': 'AeroMech Suite was created to transform the complexity of modern engineering calculations into an accessible, cloud-based SaaS platform.',
-                'about-p2': 'At its core lies the academic discipline of the <strong>Istanbul Technical University (ITU)</strong> ecosystem and real-world field experience in the aerospace-defense industry (propulsion systems, avionics testing, satellite mechanisms).',
-                'about-c1-t': 'Academic Foundation',
-                'about-c1-d': 'Advanced theories of strength and fluid dynamics are codified with engineering approaches.',
-                'about-c2-t': 'Industrial Focus',
-                'about-c2-d': 'Provides practical solutions for the field\'s real needs, from machining to pre-flight testing (PFR).',
-                'about-c3-t': 'Design & UI',
-                'about-c3-d': 'Aims for clean interfaces free from unnecessary clutter so engineers can focus on data.'
+                'hero-badge': 'AEROMECH ECOSYSTEM', 'hero-title': 'Next-Gen Design & Simulation Platform', 'hero-desc': 'Cloud-based, high-precision engineering tools developed to accelerate aerospace, mechanical design, and manufacturing processes.',
+                't1-badge': 'V 2.1 Live', 't1-desc': 'Enterprise FEA tool calculating static load scenarios for machine parts and structural profiles, providing material-based deflection, stress, and cost optimization.', 't1-btn': 'Launch Simulation',
+                't2-badge': 'In Development', 't2-desc': 'Aerodynamic analysis module calculating Lift and Drag coefficients based on wind tunnel data of aircraft wing profiles.', 't2-btn': 'Access Closed',
+                't3-badge': 'V 1.0 Live', 't3-desc': 'Cloud-based G-Code converter optimizing machining paths of mechanical designs for high-precision manufacturing facilities like aerospace and defense.', 't3-btn': 'Launch Application',
+                'footer-text': 'Designed for modern aerospace and mechanical engineering.', 'nav-home': 'Home', 'nav-modules': 'Modules', 'nav-docs': 'Documentation', 'nav-about': 'Corporate Vision',
+                'doc-title': 'Technical Documentation', 'doc-h1': 'Calculation Standards', 'doc-p1': 'AeroMech Suite operates in accordance with aerospace industry tolerances. All simulation tools reference global engineering standards.', 'doc-l1': '<strong>Material Analyzer Pro:</strong> Deflection and stress analyses are calculated using analytical algorithms built on classic <em>Euler-Bernoulli Beam Theory</em>. It is compatible with Finite Element Analysis (FEA) approaches.', 'doc-l2': '<strong>CNC Optimizer:</strong> Utilizes G-Code conversion and cleaning algorithms that ensure high-speed machining with minimal tool wear for .sldprt-based CAM data.', 'doc-h2': 'Release Notes (v2.1)', 'doc-l3': 'Aerospace Aluminum (Al 7075-T6) and Titanium alloys added to the material library.', 'doc-l4': 'Cloud-based concurrent calculation times optimized.',
+                'about-title': 'AeroMech Philosophy', 'about-p1': 'AeroMech Suite was created to transform the complexity of modern engineering calculations into an accessible, cloud-based SaaS platform.', 'about-p2': 'At its core lies the academic discipline of the <strong>Istanbul Technical University (ITU)</strong> ecosystem and real-world field experience in the aerospace-defense industry (propulsion systems, avionics testing, satellite mechanisms).', 'about-c1-t': 'Academic Foundation', 'about-c1-d': 'Advanced theories of strength and fluid dynamics are codified with engineering approaches.', 'about-c2-t': 'Industrial Focus', 'about-c2-d': 'Provides practical solutions for the field\'s real needs, from machining to pre-flight testing (PFR).', 'about-c3-t': 'Design & UI', 'about-c3-d': 'Aims for clean interfaces free from unnecessary clutter so engineers can focus on data.'
             }
         };
 
@@ -671,15 +386,12 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    // Eğer elementin içinde HTML (strong, em vb.) varsa innerHTML, yoksa nodeValue/innerText kullan
                     if(element.innerHTML.includes('<') && element.children.length > 0 && !element.querySelector('svg')) {
                         element.innerHTML = translations[lang][key];
                     } else if (element.children.length > 0 && element.querySelector('svg')) {
-                        // İkon içeren butonlar ve başlıklar için
                         let svgNode = element.querySelector('svg').outerHTML;
-                        // Sadece metni değiştir, SVG'yi koru
-                        if (element.tagName === 'H2') {
-                            element.innerHTML = svgNode + ' ' + translations[lang][key];
+                        if (element.tagName === 'H2' || element.tagName === 'BUTTON') {
+                            element.innerHTML = svgNode + '\n<span>' + translations[lang][key] + '</span>';
                         } else {
                             element.childNodes[0].nodeValue = translations[lang][key] + " ";
                         }
@@ -690,10 +402,7 @@
             });
             document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            document.title = lang === 'en' 
-                ? "AeroMech Suite | Advanced Engineering Tools" 
-                : "AeroMech Suite | Gelişmiş Mühendislik Araçları";
+            document.title = lang === 'en' ? "AeroMech Suite | Advanced Engineering Tools" : "AeroMech Suite | Gelişmiş Mühendislik Araçları";
         }
     </script>
 </body>
