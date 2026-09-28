@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Open Graph / LinkedIn Meta Etiketleri -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aeromech-suite.github.io/"> <!-- Kendi linkinle değiştirmeyi unutma -->
+    <meta property="og:url" content="https://aeromech-suite.github.io/"> 
     <meta property="og:title" content="AeroMech Suite | Advanced Engineering Tools">
     <meta property="og:description" content="Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.">
-    <meta property="og:image" content="https://aeromech-suite.github.io/preview-image.jpg"> <!-- Projenin ekran görüntüsü linkini buraya ekle -->
+    <meta property="og:image" content="https://aeromech-suite.github.io/preview-image.jpg"> 
     
     <title>AeroMech Suite | Advanced Engineering Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ANALYZER PRO İLE BİREBİR AYNI RENK PALETİ */
         :root {
             --bg: #0b1120;
             --panel: #1e293b;
@@ -33,22 +31,22 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
             position: relative;
             z-index: 1;
+            overflow-x: hidden;
         }
 
-        /* Mühendislik Arka Plan Izgarası */
         .bg-grid {
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 100vh;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-image: linear-gradient(rgba(51, 65, 85, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
             background-size: 40px 40px;
             opacity: 0.4;
             z-index: -1;
             mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
             -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+            pointer-events: none;
         }
         
         .navbar {
@@ -74,10 +72,10 @@
             align-items: center;
             gap: 12px;
             letter-spacing: -0.5px;
+            cursor: pointer;
         }
         .brand span { color: var(--primary); font-weight: 400; }
         
-        /* --- YENİ NAVİGASYON MENÜSÜ --- */
         .nav-links {
             display: flex;
             gap: 30px;
@@ -91,12 +89,10 @@
             transition: color 0.2s;
             position: relative;
             font-family: 'Inter', sans-serif;
+            cursor: pointer;
         }
-        .nav-link:hover {
-            color: var(--primary);
-        }
+        .nav-link:hover { color: var(--primary); }
         
-        /* Dropdown (Açılır Menü) Tasarımı */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -129,13 +125,13 @@
             font-size: 13px;
             font-weight: 400;
             transition: all 0.2s;
+            cursor: pointer;
         }
         .dropdown-content a:hover {
             color: var(--primary);
             background: rgba(56, 189, 248, 0.05);
-            padding-left: 24px; /* Üzerine gelince hafif sağa kayma efekti */
+            padding-left: 24px; 
         }
-        /* -------------------------------- */
 
         .lang-switch {
             display: flex;
@@ -154,7 +150,6 @@
             font-weight: 500;
             font-size: 13px;
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
         }
         .lang-btn.active {
             background: var(--primary);
@@ -163,9 +158,30 @@
         }
         .lang-btn:hover:not(.active) { color: var(--text); }
 
+        /* Ana İçerik Kapsayıcısı */
+        #main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Uygulama İçin Iframe Kapsayıcısı */
+        #app-container {
+            display: none; /* Başlangıçta gizli */
+            width: 100%;
+            height: calc(100vh - 73px); /* Navbar yüksekliğini çıkarıyoruz */
+            background: var(--bg);
+        }
+        #app-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .hero {
             text-align: center;
-            padding: 100px 20px 60px 20px;
+            padding: 80px 20px 40px 20px;
             width: 100%;
             max-width: 800px;
         }
@@ -201,25 +217,28 @@
         .container {
             max-width: 1150px;
             width: 100%;
-            padding: 20px 20px 80px 20px;
+            padding: 20px 20px 60px 20px;
             box-sizing: border-box;
         }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 60px 0 30px 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            color: var(--text);
+        }
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
 
-        /* Kart Animasyonu Tanımlaması */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .tool-card {
@@ -233,11 +252,9 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeInUp 0.6s ease-out forwards; /* Animasyonu Uygula */
-            opacity: 0; /* Başlangıçta görünmez */
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
         }
-        
-        /* Kartların sırayla gelmesi için gecikme (stagger) */
         .tool-card:nth-child(1) { animation-delay: 0.1s; }
         .tool-card:nth-child(2) { animation-delay: 0.3s; }
         .tool-card:nth-child(3) { animation-delay: 0.5s; }
@@ -284,9 +301,11 @@
             font-size: 14px;
             transition: all 0.2s;
             box-shadow: 0 4px 15px rgba(56,189,248,0.2);
+            cursor: pointer;
+            border: none;
+            display: block;
         }
         .launch-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
-        
         .btn-disabled {
             background: transparent;
             color: var(--muted);
@@ -306,12 +325,89 @@
             align-items: center;
             gap: 6px;
         }
-        .status-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-        }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
         .dot-live { background: #10b981; box-shadow: 0 0 10px rgba(16,185,129,0.5); }
         .dot-dev { background: var(--border); }
+
+        /* YENİ BÖLÜM: Endüstriyel Çözümler (Use Cases) */
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .use-case-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+        }
+        .use-case-card h4 {
+            color: var(--text);
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .use-case-card p {
+            color: var(--muted);
+            font-size: 13.5px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* YENİ BÖLÜM: İş Akışı (Workflow) */
+        .workflow-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .workflow-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        .workflow-icon {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            background: var(--bg);
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px auto;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .workflow-step h4 { margin: 0 0 5px 0; font-size: 15px; }
+        .workflow-step p { margin: 0; font-size: 13px; color: var(--muted); }
+        .workflow-arrow {
+            color: var(--border);
+        }
+
+        /* YENİ BÖLÜM: Teknik Standartlar */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .tech-badge {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
 
         footer {
             margin-top: auto;
@@ -329,7 +425,9 @@
         @media (max-width: 768px) {
             .navbar { padding: 20px; }
             .hero h1 { font-size: 36px; }
-            .nav-links { display: none; } /* Mobilde menüyü gizler */
+            .nav-links { display: none; } 
+            .workflow-container { flex-direction: column; }
+            .workflow-arrow { transform: rotate(90deg); margin: 10px 0; }
         }
     </style>
 </head>
@@ -338,26 +436,24 @@
     <div class="bg-grid"></div>
 
     <div class="navbar">
-        <div class="brand">
+        <div class="brand" onclick="goHome()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12 2 2 22 12 17 22 22 12 2"></polygon>
             </svg>
             AeroMech <span>Suite</span>
         </div>
         
-        <!-- YENİ EKLENEN MENÜ -->
         <nav class="nav-links">
-            <a href="#" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
+            <a onclick="goHome()" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
             
             <div class="dropdown">
-                <a href="#" class="nav-link" data-i18n="nav-modules" style="display: flex; align-items: center; gap: 4px;">
+                <a class="nav-link" data-i18n="nav-modules" style="display: flex; align-items: center; gap: 4px;">
                     Modüller 
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
                 <div class="dropdown-content">
-                    <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" target="_blank">Material Analyzer Pro</a>
-                    <a href="#">AeroFoil Flow Dynamics</a>
-                    <a href="cnc-optimizer.html">CNC G-Code Optimizer</a>
+                    <a onclick="openApp('https://aeromech-suite.github.io/engineering-material-analyzer/')">Material Analyzer Pro</a>
+                    <a onclick="openApp('cnc-optimizer.html')">CNC G-Code Optimizer</a>
                 </div>
             </div>
             
@@ -371,66 +467,147 @@
         </div>
     </div>
 
-    <div class="hero">
-        <div class="hero-badge" data-i18n="hero-badge">AeroMech Ekosistemi</div>
-        <h1 data-i18n="hero-title">Yeni Nesil Tasarım & Simülasyon Platformu</h1>
-        <p data-i18n="hero-desc">Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
+    <!-- UYGULAMA İÇİN IFRAME BÖLÜMÜ (Başlangıçta Gizli) -->
+    <div id="app-container">
+        <iframe id="app-frame" src=""></iframe>
     </div>
 
-    <div class="container">
-        <div class="tools-grid">
-            <!-- 1. ARAÇ -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t1-badge">V 2.1 Yayında</span></div>
-                <div class="tool-icon">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="3" y1="9" x2="21" y2="9"></line>
-                        <line x1="9" y1="21" x2="9" y2="9"></line>
-                    </svg>
+    <!-- ANA SAYFA İÇERİĞİ -->
+    <div id="main-content">
+        <div class="hero">
+            <div class="hero-badge" data-i18n="hero-badge">AeroMech Ekosistemi</div>
+            <h1 data-i18n="hero-title">Yeni Nesil Tasarım & Simülasyon Platformu</h1>
+            <p data-i18n="hero-desc">Havacılık, mekanik tasarım ve imalat süreçlerini hızlandırmak için geliştirilmiş, bulut tabanlı yüksek hassasiyetli mühendislik araçları.</p>
+        </div>
+
+        <div class="container">
+            <div class="tools-grid">
+                <!-- 1. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t1-badge">V 2.1 Yayında</span></div>
+                    <div class="tool-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Material Analyzer Pro</h3>
+                    <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
+                    <button onclick="openApp('https://aeromech-suite.github.io/engineering-material-analyzer/')" class="launch-btn" data-i18n="t1-btn">Simülasyonu Başlat</button>
                 </div>
-                <h3>Material Analyzer Pro</h3>
-                <p data-i18n="t1-desc">Makine parçaları ve yapısal profiller için statik yük senaryolarını hesaplayan, malzeme bazlı sehim, gerilme ve maliyet optimizasyonu sağlayan kurumsal FEA aracı.</p>
-                <a href="https://aeromech-suite.github.io/engineering-material-analyzer/" class="launch-btn" target="_blank" data-i18n="t1-btn">Simülasyonu Başlat</a>
+
+                <!-- 2. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t2-badge">Geliştiriliyor</span></div>
+                    <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path>
+                            <path d="M12.59 14.41A2 2 0 1 0 14 16H2"></path>
+                            <path d="M15.73 7.73A2.5 2.5 0 1 1 19.5 12H2"></path>
+                        </svg>
+                    </div>
+                    <h3>AeroFoil Flow Dynamics</h3>
+                    <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
+                    <button class="launch-btn btn-disabled" data-i18n="t2-btn">Erişime Kapalı</button>
+                </div>
+                
+                <!-- 3. ARAÇ -->
+                <div class="tool-card">
+                    <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t3-badge">V 1.0 Yayında</span></div>
+                    <div class="tool-icon" style="color: var(--primary); border-color: var(--border); background: var(--bg);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>CNC G-Code Optimizer</h3>
+                    <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
+                    <button onclick="openApp('cnc-optimizer.html')" class="launch-btn" data-i18n="t3-btn">Uygulamayı Başlat</button>
+                </div>
             </div>
 
-            <!-- 2. ARAÇ -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-dev"></div><span data-i18n="t2-badge">Geliştiriliyor</span></div>
-                <div class="tool-icon" style="color: var(--muted); border-color: var(--border); background: var(--bg);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path>
-                        <path d="M12.59 14.41A2 2 0 1 0 14 16H2"></path>
-                        <path d="M15.73 7.73A2.5 2.5 0 1 1 19.5 12H2"></path>
-                    </svg>
+            <!-- YENİ: Çözüm Alanları (Use Cases) -->
+            <h2 class="section-title" data-i18n="sec-solutions">Endüstriyel Çözüm Alanları</h2>
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <h4 data-i18n="uc1-title">Uydu & Uzay Mekanizmaları</h4>
+                    <p data-i18n="uc1-desc">Taşıyıcı gövde, APAM mekanizması ve koaksiyel dişli montajlarında yapısal stres dağılımı analizleri ve malzeme mukavemet testleri.</p>
                 </div>
-                <h3>AeroFoil Flow Dynamics</h3>
-                <p data-i18n="t2-desc">Uçak kanat profillerinin rüzgar tüneli verilerini baz alarak kaldırma (Lift) ve sürüklenme (Drag) katsayılarını hesaplayan aerodinamik analiz modülü.</p>
-                <a href="#" class="launch-btn btn-disabled" data-i18n="t2-btn">Erişime Kapalı</a>
+                <div class="use-case-card">
+                    <h4 data-i18n="uc2-title">İtki Sistemleri & Aviyonik</h4>
+                    <p data-i18n="uc2-desc">Motor parçaları üretim planlaması, ısıl tolerans analizleri ve aviyonik ünitelerin entegrasyon süreçlerindeki yapısal değerlendirmeler.</p>
+                </div>
+                <div class="use-case-card">
+                    <h4 data-i18n="uc3-title">Yüksek Hassasiyetli Talaşlı İmalat</h4>
+                    <p data-i18n="uc3-desc">Havacılık toleranslarındaki (.sldprt tabanlı) CAM tasarımlarının kusursuz G-Code çevrimleri ve üretim hızı optimizasyonu.</p>
+                </div>
+            </div>
+
+            <!-- YENİ: Entegrasyon ve İş Akışı -->
+            <h2 class="section-title" data-i18n="sec-workflow">Entegrasyon ve İş Akışı</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h4 data-i18n="wf1-title">1. CAD Tasarım</h4>
+                    <p data-i18n="wf1-desc">SolidWorks (.sldprt) verisi içe aktarılır.</p>
+                </div>
+                <div class="workflow-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 12 17 22 22 12 2"></polygon></svg>
+                    </div>
+                    <h4 data-i18n="wf2-title">2. AeroMech Analizi</h4>
+                    <p data-i18n="wf2-desc">Bulut tabanlı FEA ve stres testi uygulanır.</p>
+                </div>
+                <div class="workflow-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
+                    <h4 data-i18n="wf3-title">3. Üretime Hazır Çıktı</h4>
+                    <p data-i18n="wf3-desc">CNC makineleri için optimize edilmiş CAM / G-Code.</p>
+                </div>
+            </div>
+
+            <!-- YENİ: Teknik Standartlar -->
+            <div class="tech-stack">
+                <span class="tech-badge">Euler-Bernoulli Kiriş Teorisi</span>
+                <span class="tech-badge">Sonlu Elemanlar Analizi (FEA)</span>
+                <span class="tech-badge">Havacılık İmalat Toleransları</span>
+                <span class="tech-badge">Bulut Tabanlı Simülasyon</span>
             </div>
             
-            <!-- 3. ARAÇ (GÜNCELLENDİ) -->
-            <div class="tool-card">
-                <div class="status-badge"><div class="status-dot dot-live"></div><span data-i18n="t3-badge">V 1.0 Yayında</span></div>
-                <div class="tool-icon" style="color: var(--primary); border-color: var(--border); background: var(--bg);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                </div>
-                <h3>CNC G-Code Optimizer</h3>
-                <p data-i18n="t3-desc">Havacılık ve savunma sanayii gibi yüksek hassasiyetli üretim tesisleri için, mekanik tasarımların talaşlı imalat yollarını optimize eden bulut tabanlı G-Code çevirici.</p>
-                <a href="cnc-optimizer.html" class="launch-btn" data-i18n="t3-btn">Uygulamayı Başlat</a>
-            </div>
         </div>
+        
+        <footer>
+            &copy; 2026 AeroMech Suite. Platform architectures developed by <a href="https://www.linkedin.com/in/sametyeşiltaş" target="_blank">Samet Yeşiltaş</a>.<br>
+            <span data-i18n="footer-text" style="margin-top: 5px; display: inline-block;">Modern havacılık ve makine mühendisliği için tasarlanmıştır.</span>
+        </footer>
     </div>
 
-    <footer>
-        &copy; 2026 AeroMech Suite. Platform architectures developed by <a href="https://www.linkedin.com/in/sametyeşiltaş" target="_blank">Samet Yeşiltaş</a>.<br>
-        <span data-i18n="footer-text" style="margin-top: 5px; display: inline-block;">Modern havacılık ve makine mühendisliği için tasarlanmıştır.</span>
-    </footer>
-
     <script>
+        // IFRAME YÖNETİMİ
+        function openApp(url) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+            document.getElementById('app-frame').src = url;
+            window.scrollTo(0, 0); // Üste kaydır
+        }
+
+        function goHome() {
+            document.getElementById('app-container').style.display = 'none';
+            document.getElementById('app-frame').src = ''; // Iframe içeriğini temizle
+            document.getElementById('main-content').style.display = 'flex';
+        }
+
+        // ÇEVİRİ YÖNETİMİ
         const translations = {
             'tr': {
                 'hero-badge': 'AEROMECH EKOSİSTEMİ',
@@ -449,7 +626,22 @@
                 'nav-home': 'Ana Sayfa',
                 'nav-modules': 'Modüller',
                 'nav-docs': 'Dokümantasyon',
-                'nav-github': 'GitHub'
+                'nav-github': 'GitHub',
+                // Yeni Bölüm Çevirileri
+                'sec-solutions': 'Endüstriyel Çözüm Alanları',
+                'uc1-title': 'Uydu & Uzay Mekanizmaları',
+                'uc1-desc': 'Taşıyıcı gövde, APAM mekanizması ve koaksiyel dişli montajlarında yapısal stres dağılımı analizleri ve malzeme mukavemet testleri.',
+                'uc2-title': 'İtki Sistemleri & Aviyonik',
+                'uc2-desc': 'Motor parçaları üretim planlaması, ısıl tolerans analizleri ve aviyonik ünitelerin entegrasyon süreçlerindeki yapısal değerlendirmeler.',
+                'uc3-title': 'Yüksek Hassasiyetli Talaşlı İmalat',
+                'uc3-desc': 'Havacılık toleranslarındaki (.sldprt tabanlı) CAM tasarımlarının kusursuz G-Code çevrimleri ve üretim hızı optimizasyonu.',
+                'sec-workflow': 'Entegrasyon ve İş Akışı',
+                'wf1-title': '1. CAD Tasarım',
+                'wf1-desc': 'SolidWorks (.sldprt) verisi içe aktarılır.',
+                'wf2-title': '2. AeroMech Analizi',
+                'wf2-desc': 'Bulut tabanlı FEA ve stres testi uygulanır.',
+                'wf3-title': '3. Üretime Hazır Çıktı',
+                'wf3-desc': 'CNC makineleri için optimize edilmiş CAM / G-Code.'
             },
             'en': {
                 'hero-badge': 'AEROMECH ECOSYSTEM',
@@ -468,7 +660,22 @@
                 'nav-home': 'Home',
                 'nav-modules': 'Modules',
                 'nav-docs': 'Documentation',
-                'nav-github': 'GitHub'
+                'nav-github': 'GitHub',
+                // Yeni Bölüm Çevirileri EN
+                'sec-solutions': 'Industrial Use Cases',
+                'uc1-title': 'Satellite & Space Mechanisms',
+                'uc1-desc': 'Structural stress distribution analysis and material strength testing for carrier bodies, APAM mechanisms, and coaxial gear assemblies.',
+                'uc2-title': 'Propulsion Systems & Avionics',
+                'uc2-desc': 'Engine part production planning, thermal tolerance analysis, and structural evaluations during avionics integration processes.',
+                'uc3-title': 'High-Precision Machining',
+                'uc3-desc': 'Flawless G-Code conversions and production speed optimization for CAM designs at aerospace tolerances (.sldprt based).',
+                'sec-workflow': 'Integration & Workflow',
+                'wf1-title': '1. CAD Design',
+                'wf1-desc': 'SolidWorks (.sldprt) data is imported.',
+                'wf2-title': '2. AeroMech Analysis',
+                'wf2-desc': 'Cloud-based FEA and stress testing are applied.',
+                'wf3-title': '3. Ready-to-Produce Output',
+                'wf3-desc': 'Optimized CAM / G-Code for CNC machines.'
             }
         };
 
@@ -476,9 +683,7 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    // İçinde SVG olan elementleri (örneğin "Modüller" menüsü) bozmamak için kontrol yapıyoruz
                     if (element.children.length > 0) {
-                        // Sadece ilk metin düğümünü (text node) değiştiriyoruz
                         element.childNodes[0].nodeValue = translations[lang][key] + " ";
                     } else {
                         element.innerText = translations[lang][key];
@@ -488,7 +693,6 @@
             document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             
-            // Sekme başlığını dinamik güncelleme
             document.title = lang === 'en' 
                 ? "AeroMech Suite | Advanced Engineering Tools" 
                 : "AeroMech Suite | Gelişmiş Mühendislik Araçları";
